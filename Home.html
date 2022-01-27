@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web API Test</title>
+    <style>
+        body {
+            font-family: 'Courier New';
+            padding: 12px;
+        }
+
+        .notes {
+            font-family: 'Times New Roman';
+            font-size: 1.1em;
+            padding: 12px;
+            width: 50%;
+        }
+
+        .Links {
+            border: 1px solid gray;
+            border-radius: 12px;
+            background-color: whitesmoke;
+            padding: 24px;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h2>WebAPI Test Page</h2>
+    </div>
+
+    <h4>WebAPI Test Links</h4>
+    <!--<a href="/api/Company/DataStore">Load Data</a><br />-->
+    <div class="Links">
+        POST:<br />
+        <a href="" title="Load CSV Data" id="aLoadCSVData">POST() CSV data to DataStore</a>
+        <br />
+        <br />
+        GET:<br />
+        <a href="/api/Company/Companies">/api/Company/Companies</a>
+        <br />
+        <a href="/api/Company/Companies/id/?id=4">/api/Company/Companies/id/?id=4</a>
+        <br />
+        <a href="/api/Companies/2/Employees/E175521">/api/Companies/2/Employees/E175521</a>
+        <br />
+        <br />
+        <a href="/api/Employee/Employees">/api/Employee/Employees</a>
+        <br />
+        <a href="/api/Employee/Employees/id/?id=E173260">/api/Employee/Employees/id/?id=E173260</a>
+
+    </div>
+    <br />
+    <br />
+    <div class="notes">
+        Notes:
+        <br />
+        <br />
+        Data Transfer Objects have been created as models.
+    </div>
+    <ul>
+        <li>Company.cs        </li>
+        <li>CompanyHeader.cs  </li>
+        <li>Employee.cs       </li>
+        <li>EmployeeHeader.cs </li>
+    </ul>
+    <div class="notes">
+        Notes:
+        <br />
+        <br />
+        There was a considerable learning curve for me to complete this evaluation.  Prior to this I had no experience with WebAPI or LINQ.
+        Although I was able to cobble this together it only shows that I can learn relatively quickly technologies that I have no prior experience with,
+        not that I have general competence in those technologies. If the job requires extensive prior knowledge of WebAPI and LINQ then that should
+        obviously be considered.
+        <br />
+        <br />
+        In order to keep the architecture as simple as possible for this evaluation I created an in-code DataTable to serve as the Local Data Store.
+        The POST() command uses CSVHelper to load the CSV File Data, located in the Data folder into the DataTable, which is named DataStore.  I did not
+        create a method to upload the file from the client as that was not specified in the instructions.
+        <br />
+        <br />
+        I created a method ValidateEmployeeManager() in the EmployeeController, but was unable to figure out how to translate the SQL Statement I came up with
+        to perform the validation into a LINQ Statement. I tried a bunch of things, and then tried finding an Online Convert SQL to LINQ, but in fact, the one utility that
+        I found turned out to be buggy, and didn't work, so I was left a bit mystified, and put the SQL Statement in and assigned the procedure to WIP.  I did this
+        so that I could work on other parts of the project while I work on my understanding of LINQ.
+        <br />
+        <br />
+        Once I got the idea of how WebAPI is structured I was able to make quick progress, but the initial learning curve was a bit steep.  I had little
+        experience with MVC (I took a class on MVC in 2013), but was able to pick up the concepts reasonably quickly as the architectures are similar in nature,
+        though I wound up in the weeds on certain points (especially on my first attempt where I created a WebAPI MVC project).
+        I expect there's plenty about WebAPI that I still do not know.  What I will say is that I'm very glad I spent the time on this test to learn this material.
+        It's very interesting and I can see how useful it would be in certain scenarios where exposing API to third parties is desirable.
+        At NWNA, Blythedale, and Krasdale, we had no need to do so, and therefore I had no reason to study WebAPI before, so this was a great opporunity for me and I'm
+        happy I took full advantage of it. I now feel I have enough understanding to work with WebAPI in a practical manner. Great.
+        <br />
+        <br />
+        My impression of LINQ is that its syntax is something that requires a good deal of study and practice to get used to.  Frankly, I would normally choose to do SQL based processing
+        in SQL Server via stored procedures and return the data results to the application code, rather than run SQL operations in ASP.Net code using LINQ as a general rule.
+        The reason for this is that architecturally, I have always thought it best to keep business logic as far on the backend as possible so that you
+        do not have to re-write logic as your interfaces change or are replaced over time.  In addition it typically results in lower maintenance as updates
+        to business logic can take place in one spot, and then propogate out to whatever interfaces consume the data.
+        <br />
+        <br />
+        Although I could not complete the assignment in regards to LINQ this was a truly interesting challenge in multiple categories and I feel I learned a lot in a short time. Thanks!
+    </div>
+    <script>
+
+        var el = document.getElementById('aLoadCSVData');
+        el.onclick = LoadCSVData;
+
+        function LoadCSVData() {
+            let data = { RunProc: "LoadData" };
+
+            fetch("/api/Company/DataStore", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(res => {
+                console.log("Request complete! response:", res);
+            });
+        }
+    </script>
+
+</body>
+</html>
