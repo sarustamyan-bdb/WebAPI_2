@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ =================================================================================================================================================================
+ THIS WAS CODE FROM WEBAPI_1 WHICH WAS MY FIRST ATTEMPT AND WHICH USED MVC + WEBAPI. THIS CODE IS NOT BEING USED IN THIS PROJECT BUT IS HERE FOR MY REFERENCE.
+ =================================================================================================================================================================
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;

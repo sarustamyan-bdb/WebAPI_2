@@ -82,7 +82,7 @@
         <br />
         I created a method ValidateEmployeeManager() in the EmployeeController, but was unable to figure out how to translate the SQL Statement I came up with
         to perform the validation into a LINQ Statement. I tried a bunch of things, and then tried finding an Online Convert SQL to LINQ, but in fact, the one utility that
-        I found turned out to be buggy, and didn't work, so I was left a bit mystified, and put the SQL Statement in the comments of that routine and assigned the 
+        I found turned out to be buggy, and didn't work, so I was left a bit mystified, and put the SQL Statement in the comments of that routine and assigned the
         procedure to WIP.  I did this so that I could work on other parts of the project while I improve my understanding of LINQ.
         <br />
         <br />
@@ -103,7 +103,63 @@
         <br />
         <br />
         Although I could not complete the assignment in regards to LINQ this was a truly interesting challenge in multiple categories and I feel I learned a lot in a short time. Thanks!
+        <br />
+        <br />
+        The original instructions were as follows:
     </div>
+
+    <PRE>
+            You're given a test data (DATA.csv) from multiple companies. Design a data store an expose a RESTful API as described below.
+            The following technologies should be used in the process:
+            * ASP.NET WebAPI
+            * EntityFramework
+            We accept a git repository (github, bitbucket, etc) with the code.
+            NOTE: You can use any additional libraries you need
+
+
+            API Endpoints:
+
+            POST /DataStore
+            * Accepts the CSV data and replaces (clears and imports) the data in the store with the provided one.
+            * Validations:
+            - The employeeNumber should be unique within a given company.
+            - The manager of the given employee should exist in the same company.
+
+            GET /Companies
+            * Returns the list of CompanyHeader objects
+
+            GET /Companies/{companyId}
+            * Returns the Company object by provided ID
+
+            GET /Companies/{companyId}/Employees/{employeeNumber}
+            * Returns the Employee object by provided company ID and employee number
+            ASDsd
+
+            Data Transfer Objects:
+
+            CompanyHeader
+            Id, // CompanyId
+            Code, // CompanyCode
+            Description, // CompanyDescription
+            EmployeeCount // Number of Employees in the given company
+
+            Company : CompanyHeader
+            EmployeeHeader[] Employees // List of EmployeeHeader objects in the given company
+
+            EmployeeHeader
+            EmployeeNumber, // EmployeeNumber
+            FullName // "{EmployeeFirstName} {EmployeeLastName}"
+
+            Employee : EmployeeHeader
+            EmployeeNumber, // EmployeeNumber
+            Email, // EmployeeEmail
+            Department, // EmployeeDepartment
+            HireDate, // HireDate
+            EmployeeHeader[] Managers // List of EmployeeHeaders of the managers ordered ascending by seniority (i.e. the immediate manager first)
+        </pre>
+
+
+
     <script>
 
         var el = document.getElementById('aLoadCSVData');
@@ -120,7 +176,7 @@
                 console.log("Request complete! response:", res);
             });
         }
-    </script>
+</script>
 
 </body>
 </html>

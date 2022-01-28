@@ -1,16 +1,13 @@
-﻿using WebAPI_2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web.Http;
-using System.Data;
-using System.Data.Entity;
-using System.Web;
-using System.IO;
-using CsvHelper;
-using System.Globalization;
+﻿/*
+=================================================================================================================================================================
+PROJECT: APIWEB_1 
+AUTHOR: MARK ABRAMS
+DATE:   JAN 26, 2022
+PURPOSE: CONTROLLER FOR WEB API INITIAL TEST 
+=================================================================================================================================================================
+*/
 
+using System.Web.Http;
 
 namespace WebAPI_2.Controllers
 {

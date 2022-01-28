@@ -1,7 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿/*
+=================================================================================================================================================================
+PROJECT: APIWEB_1 
+AUTHOR: MARK ABRAMS
+DATE:   JAN 26, 2022
+PURPOSE: MODEL FOR WEB API COMPANY 
+=================================================================================================================================================================
+*/
+
 using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI_2.Models
